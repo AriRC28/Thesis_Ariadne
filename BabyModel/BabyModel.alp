@@ -280,13 +280,18 @@
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[v_currentHour = 0;
-
-//Set time
+					<Body><![CDATA[//Set time
 v_hourOfSimulatedDay = getHourOfDay();
 	
-
-for(v_iterateHours = 0; v_iterateHours < (8760 / dt_h_rapid); v_iterateHours++){
+//Set weather
+	v_temperature_degreeC = tf_temperatureData(v_currentHour);
+	v_irradiance_kWperM = tf_irradiance(v_currentHour) / 1000;	
+	
+	//Household energy calculations
+	for (Households2020 h : pop_households2020){
+		h.f_energyCalculationsCurrentHour(v_currentHour, v_temperature_degreeC, v_irradiance_kWperM);
+		}
+/*for(v_iterateHours = 0; v_iterateHours < (8760 / dt_h_rapid); v_iterateHours++){
 	
 	//Set weather
 	v_temperature_degreeC = tf_temperatureData(v_iterateHours);
@@ -296,7 +301,7 @@ for(v_iterateHours = 0; v_iterateHours < (8760 / dt_h_rapid); v_iterateHours++){
 	for (Households2020 h : pop_households2020){
 		h.f_energyCalculationsCurrentHour(v_currentHour, v_temperature_degreeC, v_irradiance_kWperM);
 	}
-}
+}*/
 
 
 f_neighborhoodEnergyTotalsCurrentHour();
@@ -787,7 +792,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Id>0</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-32944</Color>
-					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2><![CDATA[v_PVGeneration_kW]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>  
 							<Title><![CDATA[Neigborhood total energy supply (kWh)]]></Title>
 					</DatasetExpression>
@@ -807,6 +812,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 			<Id>1677400661967</Id>
 			<Name><![CDATA[Households2020]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<StartupCode><![CDATA[f_defaultParameterValues();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1677400661965</Id>
@@ -982,6 +988,9 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -1488,52 +1497,10 @@ v_baseloadElectricityConsumption_kW = uniform(0.2,1.8)*main.tf_E1AElectricityDem
 
 //PV electricity supply
 if (v_hasPV == true){
-       v_PVGeneration_kW = f_powerProduction();
-       v_annualPVGeneration_kWh += (v_PVGeneration_kW / main.dt_h_rapid);
-}
-]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1677578733414</Id>
-					<Name><![CDATA[f_energyCalculationsRapid]]></Name>
-					<X>650</X><Y>170</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[time]]></Name>
-						<Type><![CDATA[double]]></Type>
-					</Parameter>
-					<Parameter>
-						<Name><![CDATA[outsideTemperature]]></Name>
-						<Type><![CDATA[double]]></Type>
-					</Parameter>
-					<Parameter>
-						<Name><![CDATA[irradiance]]></Name>
-						<Type><![CDATA[double]]></Type>
-					</Parameter>
-					<Body><![CDATA[//VARIABLES
-v_baseloadElectricityConsumption_kW = 0;
-v_netElectricityDemand_kW = 0;
-v_PVGeneration_kW = 0;
-
-//CODE
-//Baseload electricity demand (multiplied by 4 to convert 15-minute data [kWh] to kW)
-v_baseloadElectricityConsumption_kW = uniform(0.2,1.8)*main.tf_E1AElectricityDemandProfile(main.v_iterateHours) * p_annualElectricityDemand_kWh * 4;
-
-//PV electricity supply
-if (v_hasPV == true){
 	v_PVGeneration_kW = f_powerProduction();
-	v_annualPVGeneration_kWh += (v_PVGeneration_kW /main.dt_h_rapid);
+	v_annualPVGeneration_kWh += (v_PVGeneration_kW / main.dt_h_rapid);
+	//traceln("PVGeneration at household " + this.getIndex() + " is " + v_PVGeneration_kW);
 }
-
-//Totals and net demand
-v_netElectricityDemand_kW = v_householdElectricityDemand_kW - v_PVGeneration_kW;
-
-v_annualHouseholdElectricityDemand_kWh += v_householdElectricityDemand_kW;
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1546,13 +1513,12 @@ v_annualHouseholdElectricityDemand_kWh += v_householdElectricityDemand_kW;
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if (p_ratedPower_kW < 1){
-	p_ratedPower_kW = 0.300;
+					<Body><![CDATA[	p_ratedPower_kW = 0.300;
 	p_panelSurfaceArea_m2 = 1.65;
 	p_efficiency = p_ratedPower_kW / p_panelSurfaceArea_m2;
 	p_capacityFactor = 0.85;
 	p_numberOfPanels =  round(normal(5, 15, 10, 2.5));
-}
+
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2164,12 +2130,6 @@ return v_pVPower_kW;]]></Body>
     <RequiredLibraryReference>
 		<LibraryName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></LibraryName>
 		<VersionMajor>1</VersionMajor>
-		<VersionMinor>0</VersionMinor>
-		<VersionBuild>0</VersionBuild>
-    </RequiredLibraryReference>
-    <RequiredLibraryReference>
-		<LibraryName><![CDATA[brabant_buurtmodel_public]]></LibraryName>
-		<VersionMajor>0</VersionMajor>
 		<VersionMinor>0</VersionMinor>
 		<VersionBuild>0</VersionBuild>
     </RequiredLibraryReference>
