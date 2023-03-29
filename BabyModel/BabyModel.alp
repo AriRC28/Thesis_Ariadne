@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.1.202210270952" AlpVersion="8.7.7">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.2.202303221144" AlpVersion="8.7.7">
 <Model>
 	<Id>1677400228994</Id>
 	<Name><![CDATA[BabyModel]]></Name>
@@ -16,7 +16,6 @@
 		<ActiveObjectClass>
 			<Id>1677400229000</Id>
 			<Name><![CDATA[Main]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1677400228998</Id>
@@ -35,7 +34,6 @@
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -113,7 +111,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1677586488945</Id>
 					<Name><![CDATA[v_irradiance_kWperM]]></Name>
-					<X>390</X><Y>510</Y>
+					<X>140</X><Y>680</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -125,7 +123,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1677587046055</Id>
 					<Name><![CDATA[v_iterateHours]]></Name>
-					<X>390</X><Y>540</Y>
+					<X>140</X><Y>710</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -137,7 +135,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1678955032360</Id>
 					<Name><![CDATA[v_baseloadElectricityConsumption_kW]]></Name>
-					<X>730</X><Y>390</Y>
+					<X>860</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -149,7 +147,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1678955032367</Id>
 					<Name><![CDATA[v_PVGeneration_kW]]></Name>
-					<X>730</X><Y>420</Y>
+					<X>900</X><Y>480</Y>
 					<Label><X>17.641</X><Y>-0.031</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -161,7 +159,8 @@
 				<Variable Class="PlainVariable">
 					<Id>1678956192947</Id>
 					<Name><![CDATA[v_isRapidRun]]></Name>
-					<X>390</X><Y>570</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>140</X><Y>740</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -173,7 +172,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1678956339859</Id>
 					<Name><![CDATA[v_hourOfSimulatedDay]]></Name>
-					<X>390</X><Y>600</Y>
+					<X>140</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -185,7 +184,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1678956396662</Id>
 					<Name><![CDATA[v_currentHour]]></Name>
-					<X>390</X><Y>630</Y>
+					<X>140</X><Y>800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -197,7 +196,68 @@
 				<Variable Class="PlainVariable">
 					<Id>1678956411924</Id>
 					<Name><![CDATA[v_temperature_degreeC]]></Name>
-					<X>390</X><Y>660</Y>
+					<X>140</X><Y>830</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1679928618996</Id>
+					<Name><![CDATA[v_batteryGeneration_kW]]></Name>
+					<X>900</X><Y>510</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1679928652449</Id>
+					<Name><![CDATA[v_EVGeneration_kW]]></Name>
+					<X>900</X><Y>570</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1680081821109</Id>
+					<Name><![CDATA[v_neighborhoodTotalGeneration_kW]]></Name>
+					<Description><![CDATA[Generation = Supply]]></Description>
+					<X>860</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1680101111538</Id>
+					<Name><![CDATA[v_neighborhoodTotalDemand_kW]]></Name>
+					<X>860</X><Y>600</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1680101347513</Id>
+					<Name><![CDATA[v_batteryDemand_kW]]></Name>
+					<X>900</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -209,7 +269,7 @@
 				<Variable Class="Parameter">
 					<Id>1677587133234</Id>
 					<Name><![CDATA[dt_h_rapid]]></Name>
-					<X>360</X><Y>280</Y>
+					<X>100</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -235,7 +295,7 @@
 				<Event>
 					<Id>1678888359710</Id>
 					<Name><![CDATA[e_energyCalculations]]></Name>
-					<X>340</X><Y>320</Y>
+					<X>80</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -275,34 +335,25 @@
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1678893652061</Id>
 					<Name><![CDATA[f_inTimeEnergyCalculations]]></Name>
-					<X>360</X><Y>360</Y>
+					<X>100</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//Set time
-v_hourOfSimulatedDay = getHourOfDay();
-	
-//Set weather
-	v_temperature_degreeC = tf_temperatureData(v_currentHour);
-	v_irradiance_kWperM = tf_irradiance(v_currentHour) / 1000;	
-	
-	//Household energy calculations
-	for (Households2020 h : pop_households2020){
-		h.f_energyCalculationsCurrentHour(v_currentHour, v_temperature_degreeC, v_irradiance_kWperM);
-		}
-/*for(v_iterateHours = 0; v_iterateHours < (8760 / dt_h_rapid); v_iterateHours++){
-	
-	//Set weather
-	v_temperature_degreeC = tf_temperatureData(v_iterateHours);
-	v_irradiance_kWperM = tf_irradiance(v_iterateHours) / 1000;	
-	
-	//Household energy calculations
-	for (Households2020 h : pop_households2020){
-		h.f_energyCalculationsCurrentHour(v_currentHour, v_temperature_degreeC, v_irradiance_kWperM);
-	}
-}*/
+					<Body><![CDATA[//ENERGY CALCULATIONS RUN HOURLY IN EVERY HOUSEHOLD
 
+//Set time
+v_hourOfSimulatedDay = getHourOfDay();
+/*It would also work if the next line was written: v_currentHour = time();*/
+	
+//Set temperature and irradiance
+v_temperature_degreeC = tf_temperatureData(v_currentHour);
+v_irradiance_kWperM = tf_irradiance(v_currentHour) / 1000;	
+	
+//Household energy calculations
+for (Households2020 h : pop_households2020){
+	h.f_energyCalculationsCurrentHour(v_currentHour, v_temperature_degreeC, v_irradiance_kWperM);
+	}
 
 f_neighborhoodEnergyTotalsCurrentHour();
 
@@ -310,7 +361,7 @@ energyDemandChart.updateData();
 energySupplyChart.updateData();
 
 v_currentHour++;
-//v_currentHour = time();
+
 //traceln(time());
 ]]></Body>
 				</Function>
@@ -319,25 +370,41 @@ v_currentHour++;
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1678955032351</Id>
 					<Name><![CDATA[f_neighborhoodEnergyTotalsCurrentHour]]></Name>
-					<X>710</X><Y>360</Y>
+					<X>120</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//Adds energy calculations of every household in the population of households
+					<Body><![CDATA[//NEIGHBORHOOD AGGREGATED ENEGRY CALCULATIONS
 
+//SUPPLY
+//1) PV Generation
 v_PVGeneration_kW = sum(pop_households2020, x->x.v_PVGeneration_kW);
 
+//DEMAND
+//0) Baseload demand
 v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadElectricityConsumption_kW);
 
+//1) Home batteries
+v_batteryGeneration_kW = sum(pop_households2020, x->x.v_batteryDischargePower_kW);
+v_batteryDemand_kW = sum(pop_households2020, x->x.v_batteryChargePower_kW);
+
+//2) EVs
+//v_EVGeneration_kW = sum(pop_households2020, x->x.v_batteryChargePower_kW);
+
+//AGGREGATED VALLUES (NEIGHBORHOOD)
+
+//Total neighborhood self-generation
+v_neighborhoodTotalGeneration_kW = v_PVGeneration_kW + v_batteryGeneration_kW + v_EVGeneration_kW;
+v_neighborhoodTotalDemand_kW = v_batteryDemand_kW;
 ]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1677583958699</Id>
-					<Name><![CDATA[tf_E1AElectricityDemandProfile]]></Name>
-					<X>390</X><Y>470</Y>
+					<Name><![CDATA[tf_electricityDemandProfile]]></Name>
+					<X>140</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -370,7 +437,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1678894763230</Id>
 					<Name><![CDATA[tf_temperatureData]]></Name>
-					<X>390</X><Y>400</Y>
+					<X>140</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -403,7 +470,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1678895392479</Id>
 					<Name><![CDATA[tf_irradiance]]></Name>
-					<X>390</X><Y>430</Y>
+					<X>140</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -427,6 +494,133 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 								<PackageName><![CDATA[babymodel]]></PackageName>
 								<ClassName><![CDATA[irradiance]]></ClassName>
 								<ItemName><![CDATA[irradiance]]></ItemName>
+							</ValueColumnReference>
+					</ValuesQuery>
+// arguments and values
+					<Argument><![CDATA[0.0]]></Argument>
+					<Value><![CDATA[0.0]]></Value>
+				</TableFunction>
+				<TableFunction AccessType="public" StaticFunction="false">
+					<Id>1679921888498</Id>
+					<Name><![CDATA[tf_heatPumpCOPAirSource]]></Name>
+					<Description><![CDATA[X-Axis: Outdoor temperature (°C)
+Y-Axis: Coefficient of Performance (COP) of air-to-water heat pump (air-source)]]></Description>
+					<X>140</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<InterpolationMethod>LINEAR</InterpolationMethod>
+					<OutOfRangeBehaviour>EXTRAPOLATE</OutOfRangeBehaviour>
+					<OutOfRangeCustomValue><![CDATA[0.0]]></OutOfRangeCustomValue>
+					<ApproximationOrder><![CDATA[1]]></ApproximationOrder>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<ValuesQuery>
+						<TableReference>
+						</TableReference>
+							<ArgumentColumnReference>
+							</ArgumentColumnReference>
+							<ValueColumnReference>
+							</ValueColumnReference>
+					</ValuesQuery>
+// arguments and values
+					<Argument><![CDATA[-20.0]]></Argument>
+					<Argument><![CDATA[-15.0]]></Argument>
+					<Argument><![CDATA[-10.0]]></Argument>
+					<Argument><![CDATA[-5.0]]></Argument>
+					<Argument><![CDATA[0.0]]></Argument>
+					<Argument><![CDATA[5.0]]></Argument>
+					<Argument><![CDATA[10.0]]></Argument>
+					<Argument><![CDATA[15.0]]></Argument>
+					<Argument><![CDATA[20.0]]></Argument>
+					<Argument><![CDATA[25.0]]></Argument>
+					<Argument><![CDATA[30.0]]></Argument>
+					<Value><![CDATA[1.5]]></Value>
+					<Value><![CDATA[2.0]]></Value>
+					<Value><![CDATA[2.5]]></Value>
+					<Value><![CDATA[3.0]]></Value>
+					<Value><![CDATA[3.3]]></Value>
+					<Value><![CDATA[3.6]]></Value>
+					<Value><![CDATA[3.8]]></Value>
+					<Value><![CDATA[4.0]]></Value>
+					<Value><![CDATA[4.2]]></Value>
+					<Value><![CDATA[4.3]]></Value>
+					<Value><![CDATA[4.4]]></Value>
+				</TableFunction>
+				<TableFunction AccessType="public" StaticFunction="false">
+					<Id>1679922519888</Id>
+					<Name><![CDATA[tf_heatPumpCOPHybrid]]></Name>
+					<Description><![CDATA[X-Axis: Outdoor temperature (°C)
+Y-Axis: Coefficient of Performance (COP) of air-to-water heat pump (air-source)]]></Description>
+					<X>140</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<InterpolationMethod>LINEAR</InterpolationMethod>
+					<OutOfRangeBehaviour>EXTRAPOLATE</OutOfRangeBehaviour>
+					<OutOfRangeCustomValue><![CDATA[0.0]]></OutOfRangeCustomValue>
+					<ApproximationOrder><![CDATA[1]]></ApproximationOrder>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<ValuesQuery>
+						<TableReference>
+						</TableReference>
+							<ArgumentColumnReference>
+							</ArgumentColumnReference>
+							<ValueColumnReference>
+							</ValueColumnReference>
+					</ValuesQuery>
+// arguments and values
+					<Argument><![CDATA[-20.0]]></Argument>
+					<Argument><![CDATA[-15.0]]></Argument>
+					<Argument><![CDATA[-10.0]]></Argument>
+					<Argument><![CDATA[-5.0]]></Argument>
+					<Argument><![CDATA[0.0]]></Argument>
+					<Argument><![CDATA[5.0]]></Argument>
+					<Argument><![CDATA[10.0]]></Argument>
+					<Argument><![CDATA[15.0]]></Argument>
+					<Argument><![CDATA[20.0]]></Argument>
+					<Argument><![CDATA[25.0]]></Argument>
+					<Argument><![CDATA[30.0]]></Argument>
+					<Value><![CDATA[1.2]]></Value>
+					<Value><![CDATA[1.4]]></Value>
+					<Value><![CDATA[1.7]]></Value>
+					<Value><![CDATA[2.0]]></Value>
+					<Value><![CDATA[2.2]]></Value>
+					<Value><![CDATA[2.4]]></Value>
+					<Value><![CDATA[2.6]]></Value>
+					<Value><![CDATA[2.8]]></Value>
+					<Value><![CDATA[3.0]]></Value>
+					<Value><![CDATA[3.1]]></Value>
+					<Value><![CDATA[3.2]]></Value>
+				</TableFunction>
+				<TableFunction AccessType="public" StaticFunction="false">
+					<Id>1679924563486</Id>
+					<Name><![CDATA[tf_gasDemandProfile]]></Name>
+					<X>140</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<InterpolationMethod>LINEAR</InterpolationMethod>
+					<OutOfRangeBehaviour>REPEATING</OutOfRangeBehaviour>
+					<OutOfRangeCustomValue><![CDATA[0.0]]></OutOfRangeCustomValue>
+					<ApproximationOrder><![CDATA[1]]></ApproximationOrder>
+					<LoadFromDatabase><![CDATA[true]]></LoadFromDatabase>
+					<ValuesQuery>
+						<TableReference>
+							<PackageName><![CDATA[babymodel]]></PackageName>
+							<ClassName><![CDATA[natural_gas_profile2019]]></ClassName>
+						</TableReference>
+							<ArgumentColumnReference>
+								<PackageName><![CDATA[babymodel]]></PackageName>
+								<ClassName><![CDATA[natural_gas_profile2019]]></ClassName>
+								<ItemName><![CDATA[timestep]]></ItemName>
+							</ArgumentColumnReference>
+							<ValueColumnReference>
+								<PackageName><![CDATA[babymodel]]></PackageName>
+								<ClassName><![CDATA[natural_gas_profile2019]]></ClassName>
+								<ItemName><![CDATA[g1_a_fraction]]></ItemName>
 							</ValueColumnReference>
 					</ValuesQuery>
 // arguments and values
@@ -460,7 +654,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<EmbeddedObject>
 					<Id>1677400661994</Id>
 					<Name><![CDATA[pop_households2020]]></Name>
-					<X>360</X><Y>250</Y>
+					<X>100</X><Y>250</Y>
 					<Label><X>5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -543,6 +737,15 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[p_capacityFactor]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_heatingSystemCapacity_kW]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_batteryCapacity_kWh]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_batteryMaxPower_kW]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -638,7 +841,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Text>
 					<Id>1677587974581</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>360</X><Y>190</Y>
+					<X>60</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -648,7 +851,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-14774017</Color>
-					<Text><![CDATA[Visible things]]></Text>
+					<Text><![CDATA[General functions & variables]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>25</Size>
@@ -656,151 +859,181 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<RoundedRectangle>
-					<Id>1677588004071</Id>
-					<Name><![CDATA[roundRectangle]]></Name>
-					<X>330</X><Y>180</Y>
-					<Label><X>10</X><Y>10</Y></Label>
+    			<TimeStackChart>
+					<Id>1678956685342</Id>
+					<Name><![CDATA[energyDemandChart]]></Name>
+					<X>740</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1679040000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>600</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>520</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>NORTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<DatasetExpression>
+					<Id>1680101222195</Id>
+					<Expression><![CDATA[my_dataset1]]></Expression>
+					<Color>-4144960</Color>
+					<Expression2><![CDATA[v_neighborhoodTotalDemand_kW]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+							<Title><![CDATA[Neighborhood total demand (kW)]]></Title>
+					</DatasetExpression>
+					<DatasetExpression>
+					<Id>0</Id>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-12799119</Color>
+					<Expression2><![CDATA[v_baseloadElectricityConsumption_kW]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+							<Title><![CDATA[Neighborhood total energy demand (kWh)]]></Title>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<LabelFormat>SHORT_DATE_AND_TIME</LabelFormat>
+    			</TimeStackChart>
+    			<TimeStackChart>
+					<Id>1678956830777</Id>
+					<Name><![CDATA[energySupplyChart]]></Name>
+					<X>740</X><Y>900</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1679040000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>600</Width>
+					<Height>250</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>520</Width>
+						<Height>110</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>NORTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>80</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<DatasetExpression>
+					<Id>0</Id>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-4144960</Color>
+					<Expression2><![CDATA[v_neighborhoodTotalGeneration_kW]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+							<Title><![CDATA[Neighborhood total self-generated energy (kWh)]]></Title>
+					</DatasetExpression>
+					<DatasetExpression>
+					<Id>1679928548965</Id>
+					<Expression><![CDATA[my_dataset1]]></Expression>
+					<Color>-256</Color>
+					<Expression2><![CDATA[v_PVGeneration_kW]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+							<Title><![CDATA[Neighborhood total PV-generated energy (kWh)]]></Title>
+					</DatasetExpression>
+					<DatasetExpression>
+					<Id>1679928707381</Id>
+					<Expression><![CDATA[my_dataset2]]></Expression>
+					<Color>-5247250</Color>
+					<Expression2><![CDATA[v_batteryGeneration_kW]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+							<Title><![CDATA[Neighborhood total battery-generated energy (kWh)]]></Title>
+					</DatasetExpression>
+					<DatasetExpression>
+					<Id>1679928754093</Id>
+					<Expression><![CDATA[my_dataset3]]></Expression>
+					<Color>-6751336</Color>
+					<Expression2><![CDATA[v_EVGeneration_kW]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+							<Title><![CDATA[Neighborhood total EV-generated energy (kWh)]]></Title>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<LabelFormat>SHORT_DATE_AND_TIME</LabelFormat>
+    			</TimeStackChart>
+				<Text>
+					<Id>1679921827523</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>840</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-14774017</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>DOTTED</LineStyle>
-					<Width>750</Width>
-					<Height>760</Height>
 					<Rotation>0.0</Rotation>
-					<FillColor/>
-					<FillMaterial>null</FillMaterial>
-					<ArcRadius>10</ArcRadius>
-				</RoundedRectangle>
-    			<TimeStackChart>
-					<Id>1678956685342</Id>
-					<Name><![CDATA[energyDemandChart]]></Name>
-					<X>720</X><Y>480</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1679040000000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>260</Width>
-					<Height>210</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>180</Width>
-						<Height>120</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-16777216</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
-					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
-					<DatasetExpression>
-					<Id>0</Id>
-					<Expression><![CDATA[my_dataset]]></Expression>
-					<Color>-12799119</Color>
-					<Expression2><![CDATA[0]]></Expression2>
-					<Expression2Flag>true</Expression2Flag>  
-							<Title><![CDATA[Neighborhood total energy demand (kWh)]]></Title>
-					</DatasetExpression>
-					<SamplesToKeep>100</SamplesToKeep>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
-					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
-    			</TimeStackChart>
-    			<TimeStackChart>
-					<Id>1678956830777</Id>
-					<Name><![CDATA[energySupplyChart]]></Name>
-					<X>720</X><Y>720</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1679040000000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>260</Width>
-					<Height>210</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>180</Width>
-						<Height>120</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-16777216</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
-					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
-					<DatasetExpression>
-					<Id>0</Id>
-					<Expression><![CDATA[my_dataset]]></Expression>
-					<Color>-32944</Color>
-					<Expression2><![CDATA[v_PVGeneration_kW]]></Expression2>
-					<Expression2Flag>true</Expression2Flag>  
-							<Title><![CDATA[Neigborhood total energy supply (kWh)]]></Title>
-					</DatasetExpression>
-					<SamplesToKeep>100</SamplesToKeep>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
-					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
-    			</TimeStackChart>
+					<Color>-4565549</Color>
+					<Text><![CDATA[Variables for graphs (aggregated)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>25</Size>
+						<Style>3</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
@@ -811,8 +1044,8 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 		<ActiveObjectClass>
 			<Id>1677400661967</Id>
 			<Name><![CDATA[Households2020]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
-			<StartupCode><![CDATA[f_defaultParameterValues();]]></StartupCode>
+			<StartupCode><![CDATA[f_setPVValues();
+f_setBatteryValues();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1677400661965</Id>
@@ -831,7 +1064,6 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -909,7 +1141,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="PlainVariable">
 					<Id>1677586756316</Id>
 					<Name><![CDATA[v_householdElectricityDemand_kW]]></Name>
-					<X>650</X><Y>360</Y>
+					<X>130</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -921,43 +1153,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="PlainVariable">
 					<Id>1677586814130</Id>
 					<Name><![CDATA[v_baseloadElectricityConsumption_kW]]></Name>
-					<X>651</X><Y>391</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1677586937916</Id>
-					<Name><![CDATA[v_annualPVGeneration_kWh]]></Name>
-					<X>1200</X><Y>450</Y>
-					<Label><X>20</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1677587077276</Id>
-					<Name><![CDATA[v_netElectricityDemand_kW]]></Name>
-					<X>650</X><Y>420</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1677587153918</Id>
-					<Name><![CDATA[v_annualHouseholdElectricityDemand_kWh]]></Name>
-					<X>650</X><Y>450</Y>
+					<X>131</X><Y>351</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -969,7 +1165,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="PlainVariable">
 					<Id>1677587182865</Id>
 					<Name><![CDATA[v_PVGeneration_kW]]></Name>
-					<X>650</X><Y>479</Y>
+					<X>730</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -979,24 +1175,72 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1677587284615</Id>
-					<Name><![CDATA[v_hasPV]]></Name>
-					<X>650</X><Y>509</Y>
+					<Id>1677753006735</Id>
+					<Name><![CDATA[v_pVPower_kW]]></Name>
+					<X>730</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[boolean]]></Type>        
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1680097002863</Id>
+					<Name><![CDATA[v_batterySOC_kWh]]></Name>
+					<X>1100</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[true]]></Code>
+							<Code><![CDATA[0]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1677753006735</Id>
-					<Name><![CDATA[v_pVPower_kW]]></Name>
-					<X>1200</X><Y>420</Y>
+					<Id>1680097015770</Id>
+					<Name><![CDATA[v_batteryDischargePower_kW]]></Name>
+					<X>1100</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1680097031766</Id>
+					<Name><![CDATA[v_batteryChargePower_kW]]></Name>
+					<X>1100</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1680097731778</Id>
+					<Name><![CDATA[v_householdElectricitySupply_kW]]></Name>
+					<X>130</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1680102647521</Id>
+					<Name><![CDATA[v_batteryPower_kW]]></Name>
+					<X>1100</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1008,7 +1252,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677400662009</Id>
 					<Name><![CDATA[p_privatelyOwned]]></Name>
-					<X>130</X><Y>580</Y>
+					<X>130</X><Y>980</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1030,7 +1274,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Id>1677400662010</Id>
 					<Name><![CDATA[p_householdFootprint]]></Name>
 					<Description><![CDATA[Nord Brabaant Model: p_floorSurfaceArea]]></Description>
-					<X>130</X><Y>550</Y>
+					<X>130</X><Y>950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1051,7 +1295,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677400662027</Id>
 					<Name><![CDATA[p_xCoordenate]]></Name>
-					<X>130</X><Y>340</Y>
+					<X>130</X><Y>740</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1072,7 +1316,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677400662028</Id>
 					<Name><![CDATA[p_yCoordenate]]></Name>
-					<X>130</X><Y>370</Y>
+					<X>130</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1093,7 +1337,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677400829810</Id>
 					<Name><![CDATA[p_householdID]]></Name>
-					<X>130</X><Y>430</Y>
+					<X>130</X><Y>830</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1114,7 +1358,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677400829825</Id>
 					<Name><![CDATA[p_buildingTypeString]]></Name>
-					<X>130</X><Y>190</Y>
+					<X>130</X><Y>590</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1136,7 +1380,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Id>1677400829841</Id>
 					<Name><![CDATA[p_buildingSubType]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>130</X><Y>220</Y>
+					<X>130</X><Y>620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1157,7 +1401,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677400829861</Id>
 					<Name><![CDATA[p_energyLabel]]></Name>
-					<X>130</X><Y>610</Y>
+					<X>130</X><Y>1010</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1182,7 +1426,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Description><![CDATA[- Nord Brabaan Model: pandstatus
 - Used for exclussion of households.
 - Options: being used (pand in gebruik), demolition permit (sloopvergunnigun verleend), demolition premises (verbouwing pand), building permit (bauwvegunning verleend)]]></Description>
-					<X>130</X><Y>250</Y>
+					<X>130</X><Y>650</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1204,7 +1448,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Id>1677400829905</Id>
 					<Name><![CDATA[p_householdNumber]]></Name>
 					<Description><![CDATA[Nord Brabaan Model: huisnummer]]></Description>
-					<X>130</X><Y>460</Y>
+					<X>130</X><Y>860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1226,7 +1470,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Id>1677400829921</Id>
 					<Name><![CDATA[p_householdLetter]]></Name>
 					<Description><![CDATA[NBM: huisletter]]></Description>
-					<X>130</X><Y>490</Y>
+					<X>130</X><Y>890</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1249,7 +1493,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Name><![CDATA[p_householdAddition]]></Name>
 					<Description><![CDATA[- Refers to the addition in the address of the household (apart from the number and the letter)
 - NBM: toevoeging]]></Description>
-					<X>130</X><Y>520</Y>
+					<X>130</X><Y>920</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1270,7 +1514,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677400829943</Id>
 					<Name><![CDATA[p_postcode]]></Name>
-					<X>130</X><Y>280</Y>
+					<X>130</X><Y>680</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1292,7 +1536,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Id>1677400829951</Id>
 					<Name><![CDATA[p_yearBuilt]]></Name>
 					<Description><![CDATA[Nord Brabaant Model: bouwjaar]]></Description>
-					<X>130</X><Y>310</Y>
+					<X>130</X><Y>710</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1314,7 +1558,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<Id>1677400829964</Id>
 					<Name><![CDATA[p_buildingID]]></Name>
 					<Description><![CDATA[In Nord Brabaant's Model: pandidenti]]></Description>
-					<X>130</X><Y>160</Y>
+					<X>130</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1335,7 +1579,8 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677584076106</Id>
 					<Name><![CDATA[p_annualElectricityDemand_kWh]]></Name>
-					<X>360</X><Y>160</Y>
+					<Description><![CDATA[According to the Netherlands Enterprise Agency in 2020 []]></Description>
+					<X>360</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1345,7 +1590,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[2700]]></Code>
+							<Code><![CDATA[2790]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1677584076104</Id>
@@ -1359,7 +1604,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677753006745</Id>
 					<Name><![CDATA[p_ratedPower_kW]]></Name>
-					<X>1200</X><Y>130</Y>
+					<X>730</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1381,7 +1626,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677753006748</Id>
 					<Name><![CDATA[p_panelSurfaceArea_m2]]></Name>
-					<X>1200</X><Y>170</Y>
+					<X>730</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1402,7 +1647,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677753006759</Id>
 					<Name><![CDATA[p_efficiency]]></Name>
-					<X>1200</X><Y>150</Y>
+					<X>730</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1423,7 +1668,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677753006762</Id>
 					<Name><![CDATA[p_numberOfPanels]]></Name>
-					<X>1200</X><Y>220</Y>
+					<X>730</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1444,7 +1689,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 				<Variable Class="Parameter">
 					<Id>1677753006765</Id>
 					<Name><![CDATA[p_capacityFactor]]></Name>
-					<X>1200</X><Y>190</Y>
+					<X>730</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1462,6 +1707,76 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1679927478596</Id>
+					<Name><![CDATA[p_heatingSystemCapacity_kW]]></Name>
+					<Description><![CDATA[Default values for:
+	a) NG boilers = 40 kW
+	b) hybrid heat pumps = 28 kW
+	c) electric heat pumps = 14 kW]]></Description>
+					<X>1560</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[40]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1679927478594</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1680096654202</Id>
+					<Name><![CDATA[p_batteryCapacity_kWh]]></Name>
+					<X>1100</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1680096654200</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1680096673932</Id>
+					<Name><![CDATA[p_batteryMaxPower_kW]]></Name>
+					<X>1100</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1680096673930</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -1469,7 +1784,7 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1677578718730</Id>
 					<Name><![CDATA[f_energyCalculationsCurrentHour]]></Name>
-					<X>650</X><Y>140</Y>
+					<X>130</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1486,39 +1801,49 @@ v_baseloadElectricityConsumption_kW = sum(pop_households2020, x->x.v_baseloadEle
 						<Name><![CDATA[irradiance]]></Name>
 						<Type><![CDATA[double]]></Type>
 					</Parameter>
-					<Body><![CDATA[//VARIABLES
+					<Body><![CDATA[//ENERGY CALCULATIONS PER HOUR
+
+//VARIABLES VALUE RESET (what else do I need to reset?)
 v_baseloadElectricityConsumption_kW = 0;
 v_PVGeneration_kW = 0;
 
-
 //CODE
-//Baseload electricity demand (multiplied by 4 to convert 15-minute data [kWh] to kW)
-v_baseloadElectricityConsumption_kW = uniform(0.2,1.8)*main.tf_E1AElectricityDemandProfile(main.v_currentHour) * p_annualElectricityDemand_kWh * 4;
+//0) Baseload electricity demand (multiplied by 4 to convert 15-minute data [kWh] to kW)
+v_baseloadElectricityConsumption_kW = uniform(0.2,1.8)*main.tf_electricityDemandProfile(main.v_currentHour) * p_annualElectricityDemand_kWh * 4;
 
-//PV electricity supply
-if (v_hasPV == true){
-	v_PVGeneration_kW = f_powerProduction();
-	v_annualPVGeneration_kWh += (v_PVGeneration_kW / main.dt_h_rapid);
-	//traceln("PVGeneration at household " + this.getIndex() + " is " + v_PVGeneration_kW);
-}
-]]></Body>
+//1) PV electricity supply
+v_PVGeneration_kW = f_powerProduction();
+//traceln("PVGeneration at household " + this.getIndex() + " is " + v_PVGeneration_kW);
+
+//2) Household batteries (supply & demand)
+f_batteryChargeDischarge();
+
+//3) EVs (supply & demand)
+
+//4) Heatpumps (demand)
+
+// Total self-generated energy SUPPLY
+v_householdElectricitySupply_kW = v_PVGeneration_kW;
+
+//Total household DEMAND (add heat pump, EV charging, 
+v_householdElectricityDemand_kW = v_baseloadElectricityConsumption_kW ;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1677753006731</Id>
-					<Name><![CDATA[f_defaultParameterValues]]></Name>
-					<X>1200</X><Y>310</Y>
+					<Name><![CDATA[f_setPVValues]]></Name>
+					<X>730</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[	p_ratedPower_kW = 0.300;
-	p_panelSurfaceArea_m2 = 1.65;
-	p_efficiency = p_ratedPower_kW / p_panelSurfaceArea_m2;
-	p_capacityFactor = 0.85;
-	p_numberOfPanels =  round(normal(5, 15, 10, 2.5));
-
+					<Body><![CDATA[//Default PV panel's parameters
+p_ratedPower_kW = 0.300;
+p_panelSurfaceArea_m2 = 1.65;
+p_efficiency = p_ratedPower_kW / p_panelSurfaceArea_m2;
+p_capacityFactor = 0.85;
+p_numberOfPanels =  round(normal(5, 15, 10, 2.5));
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1526,15 +1851,72 @@ if (v_hasPV == true){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1677753006733</Id>
 					<Name><![CDATA[f_powerProduction]]></Name>
-					<X>1200</X><Y>340</Y>
+					<X>150</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[v_pVPower_kW = main.v_irradiance_kWperM * p_efficiency * p_panelSurfaceArea_m2 * p_capacityFactor * p_numberOfPanels;
-// Capacity factor may vary depending on temperature, inclination, orientation, shade, etc. more detail needed
+					<Body><![CDATA[//HOUSEHOLD'S POWER PRODUCTION
 
-return v_pVPower_kW;]]></Body>
+//1) PV power generated by the default parameters of the PV panel with respect to the irradiance
+// Capacity factor may vary depending on temperature, inclination, orientation, shade, etc. more detail needed
+v_pVPower_kW = main.v_irradiance_kWperM * p_efficiency * p_panelSurfaceArea_m2 * p_capacityFactor * p_numberOfPanels;
+
+return v_pVPower_kW;
+
+//2) Home battery's discharge
+
+
+//3) EVs discharge
+
+
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1680097315766</Id>
+					<Name><![CDATA[f_batteryChargeDischarge]]></Name>
+					<X>1100</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//RESET VARIABLES' VALUES
+v_batteryDischargePower_kW = 0;
+v_batteryChargePower_kW = 0;
+
+//Charge (when demand is lower than self-generated supply & battery is not fully charged)
+if(v_householdElectricitySupply_kW > v_householdElectricityDemand_kW && p_batteryCapacity_kWh > v_batterySOC_kWh){
+	
+	//Prioritizes the baseload consumption to be met before the battery is charged
+	v_batteryChargePower_kW = v_householdElectricitySupply_kW - v_householdElectricityDemand_kW;
+
+}
+
+//Discharge (if self-generated supply is less than demand & the battery has any kind of charge)
+else if (v_householdElectricitySupply_kW < v_householdElectricityDemand_kW && v_batterySOC_kWh > 0){
+	
+	//It discharges at the rate that the manufacturer defined as continous
+	v_batteryDischargePower_kW = p_batteryMaxPower_kW;
+}
+
+//SOC modified after it charged/discharged
+v_batterySOC_kWh += v_batteryChargePower_kW - v_batteryDischargePower_kW;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1680099725126</Id>
+					<Name><![CDATA[f_setBatteryValues]]></Name>
+					<X>1100</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//From Tesla Powerwall 2
+p_batteryCapacity_kWh = 13.5;
+p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, off-grid/backup)]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -1592,7 +1974,7 @@ return v_pVPower_kW;]]></Body>
 				<Text>
 					<Id>1677400955081</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>110</X><Y>60</Y>
+					<X>110</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1602,7 +1984,7 @@ return v_pVPower_kW;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-4565549</Color>
-					<Text><![CDATA[Parameters]]></Text>
+					<Text><![CDATA[General Household Parameters]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>25</Size>
@@ -1613,7 +1995,7 @@ return v_pVPower_kW;]]></Body>
 				<Text>
 					<Id>1677401086021</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>120</X><Y>120</Y>
+					<X>120</X><Y>520</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1634,7 +2016,7 @@ return v_pVPower_kW;]]></Body>
 				<Text>
 					<Id>1677401212792</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>130</X><Y>390</Y>
+					<X>130</X><Y>790</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1655,7 +2037,7 @@ return v_pVPower_kW;]]></Body>
 				<Rectangle>
 					<Id>1677402193526</Id>
 					<Name><![CDATA[rectangle]]></Name>
-					<X>100</X><Y>60</Y>
+					<X>100</X><Y>80</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1669,36 +2051,15 @@ return v_pVPower_kW;]]></Body>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>DASHED</LineStyle>
 					<Width>530</Width>
-					<Height>570</Height>
+					<Height>950</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor/>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
-				<Text>
-					<Id>1677402259305</Id>
-					<Name><![CDATA[text3]]></Name>
-					<X>110</X><Y>100</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-4144960</Color>
-					<Text><![CDATA[Note: in the description of the parameters, their name in the Nord Brabaant Model (NBM) can be seen.]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>11</Size>
-						<Style>2</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Text>
 					<Id>1677427621900</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>640</X><Y>90</Y>
+					<X>120</X><Y>100</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1708,7 +2069,8 @@ return v_pVPower_kW;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-4565549</Color>
-					<Text><![CDATA[Functions/Action charts]]></Text>
+					<Text><![CDATA[Functions/
+]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>25</Size>
@@ -1716,53 +2078,10 @@ return v_pVPower_kW;]]></Body>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Text>
-					<Id>1677578603558</Id>
-					<Name><![CDATA[text5]]></Name>
-					<X>640</X><Y>200</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-4565549</Color>
-					<Text><![CDATA[Sub-Agents]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>25</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Rectangle>
-					<Id>1677583596679</Id>
-					<Name><![CDATA[rectangle1]]></Name>
-					<X>630</X><Y>60</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-4565549</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>DASHED</LineStyle>
-					<Width>390</Width>
-					<Height>570</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor/>
-					<FillMaterial>null</FillMaterial>
-				</Rectangle>
 				<Text>
 					<Id>1677584165450</Id>
 					<Name><![CDATA[text6]]></Name>
-					<X>370</X><Y>120</Y>
+					<X>370</X><Y>520</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1783,7 +2102,7 @@ return v_pVPower_kW;]]></Body>
 				<Text>
 					<Id>1677586785227</Id>
 					<Name><![CDATA[text7]]></Name>
-					<X>640</X><Y>280</Y>
+					<X>120</X><Y>230</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1825,7 +2144,7 @@ return v_pVPower_kW;]]></Body>
 				<Text>
 					<Id>1677753006699</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>1190</X><Y>80</Y>
+					<X>720</X><Y>180</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1835,7 +2154,7 @@ return v_pVPower_kW;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-29696</Color>
-					<Text><![CDATA[Parameters]]></Text>
+					<Text><![CDATA[PV Parameters]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>25</Size>
@@ -1846,7 +2165,7 @@ return v_pVPower_kW;]]></Body>
 				<Rectangle>
 					<Id>1677753006711</Id>
 					<Name><![CDATA[rectangle2]]></Name>
-					<X>1170</X><Y>70</Y>
+					<X>700</X><Y>80</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1859,8 +2178,8 @@ return v_pVPower_kW;]]></Body>
 					<LineColor>-29696</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>DASHED</LineStyle>
-					<Width>280</Width>
-					<Height>420</Height>
+					<Width>300</Width>
+					<Height>380</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor/>
 					<FillMaterial>null</FillMaterial>
@@ -1868,7 +2187,7 @@ return v_pVPower_kW;]]></Body>
 				<Text>
 					<Id>1677753006727</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>1190</X><Y>370</Y>
+					<X>720</X><Y>360</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1878,7 +2197,7 @@ return v_pVPower_kW;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-29696</Color>
-					<Text><![CDATA[Variables]]></Text>
+					<Text><![CDATA[PV Variables]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>25</Size>
@@ -1889,7 +2208,7 @@ return v_pVPower_kW;]]></Body>
 				<Text>
 					<Id>1677753006729</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>1190</X><Y>260</Y>
+					<X>720</X><Y>100</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1899,7 +2218,177 @@ return v_pVPower_kW;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-29696</Color>
-					<Text><![CDATA[Functions]]></Text>
+					<Text><![CDATA[PV Functions]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>25</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1679917283456</Id>
+					<Name><![CDATA[text12]]></Name>
+					<X>1540</X><Y>200</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-6632142</Color>
+					<Text><![CDATA[Heating System Parameters]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>25</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1679917283472</Id>
+					<Name><![CDATA[rectangle3]]></Name>
+					<X>1520</X><Y>60</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-6632142</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>DASHED</LineStyle>
+					<Width>360</Width>
+					<Height>420</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1679917283474</Id>
+					<Name><![CDATA[text13]]></Name>
+					<X>1540</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-6632142</Color>
+					<Text><![CDATA[Heating System Variables]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>25</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1679917283476</Id>
+					<Name><![CDATA[text14]]></Name>
+					<X>1540</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-6632142</Color>
+					<Text><![CDATA[Heating System Functions]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>25</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1680096575771</Id>
+					<Name><![CDATA[rectangle4]]></Name>
+					<X>1060</X><Y>80</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-10039894</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>DASHED</LineStyle>
+					<Width>300</Width>
+					<Height>420</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1680096575780</Id>
+					<Name><![CDATA[text15]]></Name>
+					<X>1080</X><Y>340</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-10039894</Color>
+					<Text><![CDATA[Battery Variables]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>25</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1680096575782</Id>
+					<Name><![CDATA[text16]]></Name>
+					<X>1080</X><Y>220</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-10039894</Color>
+					<Text><![CDATA[Battery Parameters]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>25</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1680096575791</Id>
+					<Name><![CDATA[text17]]></Name>
+					<X>1080</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-10039894</Color>
+					<Text><![CDATA[Battery Functions]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>25</Size>
@@ -1922,8 +2411,8 @@ return v_pVPower_kW;]]></Body>
 	<RelativeAccuracy>1.0E-5</RelativeAccuracy>
 	<TimeAccuracy>1.0E-5</TimeAccuracy>
 	<Frame>
-		<Width>1170</Width>
-		<Height>980</Height>
+		<Width>2020</Width>
+		<Height>1160</Height>
 	</Frame>
 	<Database>
 		<Logging>false</Logging>
@@ -2060,7 +2549,6 @@ return v_pVPower_kW;]]></Body>
 		<SimulationExperiment ActiveObjectClassId="1677400229000">
 			<Id>1677400229002</Id>
 			<Name><![CDATA[Simulation]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>512</MaximumMemory>
 			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
