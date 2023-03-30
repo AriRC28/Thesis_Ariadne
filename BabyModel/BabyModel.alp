@@ -135,7 +135,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1678955032360</Id>
 					<Name><![CDATA[v_baseloadElectricityConsumption_kW]]></Name>
-					<X>860</X><Y>400</Y>
+					<X>900</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -245,7 +245,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1680101111538</Id>
 					<Name><![CDATA[v_neighborhoodTotalDemand_kW]]></Name>
-					<X>860</X><Y>600</Y>
+					<X>860</X><Y>370</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -268,7 +268,7 @@
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1677587133234</Id>
-					<Name><![CDATA[dt_h_rapid]]></Name>
+					<Name><![CDATA[dt_h]]></Name>
 					<X>100</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -316,7 +316,7 @@
 							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[dt_h_rapid]]></Code>
+							<Code><![CDATA[dt_h]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
@@ -350,20 +350,20 @@ v_hourOfSimulatedDay = getHourOfDay();
 v_temperature_degreeC = tf_temperatureData(v_currentHour);
 v_irradiance_kWperM = tf_irradiance(v_currentHour) / 1000;	
 	
-//Household energy calculations
+//Household energy calculations function is run
 for (Households2020 h : pop_households2020){
 	h.f_energyCalculationsCurrentHour(v_currentHour, v_temperature_degreeC, v_irradiance_kWperM);
 	}
 
+//Neighbourhood aggregated values funcion is run
 f_neighborhoodEnergyTotalsCurrentHour();
 
-energyDemandChart.updateData();
-energySupplyChart.updateData();
+//Charts are updated
+ch_energyDemand.updateData();
+ch_energySupply.updateData();
 
-v_currentHour++;
-
-//traceln(time());
-]]></Body>
+//Adds an hour, so that the function can me run again
+v_currentHour++;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -396,7 +396,7 @@ v_batteryDemand_kW = sum(pop_households2020, x->x.v_batteryChargePower_kW);
 
 //Total neighborhood self-generation
 v_neighborhoodTotalGeneration_kW = v_PVGeneration_kW + v_batteryGeneration_kW + v_EVGeneration_kW;
-v_neighborhoodTotalDemand_kW = v_batteryDemand_kW;
+v_neighborhoodTotalDemand_kW = v_batteryDemand_kW + v_baseloadElectricityConsumption_kW;
 ]]></Body>
 				</Function>
 			</Functions>
@@ -861,7 +861,7 @@ Y-Axis: Coefficient of Performance (COP) of air-to-water heat pump (air-source)]
 				</Text>
     			<TimeStackChart>
 					<Id>1678956685342</Id>
-					<Name><![CDATA[energyDemandChart]]></Name>
+					<Name><![CDATA[ch_energyDemand]]></Name>
 					<X>740</X><Y>640</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -921,7 +921,7 @@ Y-Axis: Coefficient of Performance (COP) of air-to-water heat pump (air-source)]
 					<Color>-12799119</Color>
 					<Expression2><![CDATA[v_baseloadElectricityConsumption_kW]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
-							<Title><![CDATA[Neighborhood total energy demand (kWh)]]></Title>
+							<Title><![CDATA[Neighborhood total baseload demand (kW)]]></Title>
 					</DatasetExpression>
 					<SamplesToKeep>100</SamplesToKeep>
 					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
@@ -930,7 +930,7 @@ Y-Axis: Coefficient of Performance (COP) of air-to-water heat pump (air-source)]
     			</TimeStackChart>
     			<TimeStackChart>
 					<Id>1678956830777</Id>
-					<Name><![CDATA[energySupplyChart]]></Name>
+					<Name><![CDATA[ch_energySupply]]></Name>
 					<X>740</X><Y>900</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -1000,14 +1000,6 @@ Y-Axis: Coefficient of Performance (COP) of air-to-water heat pump (air-source)]
 					<Expression2Flag>true</Expression2Flag>
 							<Title><![CDATA[Neighborhood total battery-generated energy (kWh)]]></Title>
 					</DatasetExpression>
-					<DatasetExpression>
-					<Id>1679928754093</Id>
-					<Expression><![CDATA[my_dataset3]]></Expression>
-					<Color>-6751336</Color>
-					<Expression2><![CDATA[v_EVGeneration_kW]]></Expression2>
-					<Expression2Flag>true</Expression2Flag>
-							<Title><![CDATA[Neighborhood total EV-generated energy (kWh)]]></Title>
-					</DatasetExpression>
 					<SamplesToKeep>100</SamplesToKeep>
 					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
 					<VerScaleType>AUTO</VerScaleType>
@@ -1016,7 +1008,7 @@ Y-Axis: Coefficient of Performance (COP) of air-to-water heat pump (air-source)]
 				<Text>
 					<Id>1679921827523</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>840</X><Y>320</Y>
+					<X>850</X><Y>290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1034,6 +1026,65 @@ Y-Axis: Coefficient of Performance (COP) of air-to-water heat pump (air-source)]
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+    			<BarChart>
+					<Id>1680174576831</Id>
+					<Name><![CDATA[ch_yearlyNeighborhoodGeneration_kW]]></Name>
+					<X>100</X><Y>930</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1680249600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>180</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>1680174578574</Id>
+					<Expression><![CDATA[0]]></Expression>
+					<Color>-7667573</Color>
+						<Title><![CDATA[Neighborhood's yearly self-generated energy]]></Title>
+					</DataItem>
+					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</BarChart>
 			</Presentation>
 
 				</Level>
@@ -1165,7 +1216,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1677587182865</Id>
 					<Name><![CDATA[v_PVGeneration_kW]]></Name>
-					<X>730</X><Y>440</Y>
+					<X>730</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1177,7 +1228,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1677753006735</Id>
 					<Name><![CDATA[v_pVPower_kW]]></Name>
-					<X>730</X><Y>410</Y>
+					<X>730</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1189,7 +1240,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1680097002863</Id>
 					<Name><![CDATA[v_batterySOC_kWh]]></Name>
-					<X>1100</X><Y>440</Y>
+					<X>1100</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1204,7 +1255,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1680097015770</Id>
 					<Name><![CDATA[v_batteryDischargePower_kW]]></Name>
-					<X>1100</X><Y>480</Y>
+					<X>1100</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1216,7 +1267,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1680097031766</Id>
 					<Name><![CDATA[v_batteryChargePower_kW]]></Name>
-					<X>1100</X><Y>520</Y>
+					<X>1100</X><Y>580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1239,8 +1290,20 @@ f_setBatteryValues();]]></StartupCode>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1680102647521</Id>
-					<Name><![CDATA[v_batteryPower_kW]]></Name>
-					<X>1100</X><Y>390</Y>
+					<Name><![CDATA[v_batteryGeneration_kW]]></Name>
+					<X>1100</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1680181311308</Id>
+					<Name><![CDATA[v_batteryDemand_kW]]></Name>
+					<X>1100</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1604,7 +1667,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1677753006745</Id>
 					<Name><![CDATA[p_ratedPower_kW]]></Name>
-					<X>730</X><Y>230</Y>
+					<X>730</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1626,7 +1689,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1677753006748</Id>
 					<Name><![CDATA[p_panelSurfaceArea_m2]]></Name>
-					<X>730</X><Y>280</Y>
+					<X>730</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1647,7 +1710,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1677753006759</Id>
 					<Name><![CDATA[p_efficiency]]></Name>
-					<X>730</X><Y>250</Y>
+					<X>730</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1668,7 +1731,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1677753006762</Id>
 					<Name><![CDATA[p_numberOfPanels]]></Name>
-					<X>730</X><Y>340</Y>
+					<X>730</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1689,7 +1752,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1677753006765</Id>
 					<Name><![CDATA[p_capacityFactor]]></Name>
-					<X>730</X><Y>310</Y>
+					<X>730</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1738,7 +1801,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1680096654202</Id>
 					<Name><![CDATA[p_batteryCapacity_kWh]]></Name>
-					<X>1100</X><Y>270</Y>
+					<X>1100</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1759,7 +1822,7 @@ f_setBatteryValues();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1680096673932</Id>
 					<Name><![CDATA[p_batteryMaxPower_kW]]></Name>
-					<X>1100</X><Y>310</Y>
+					<X>1100</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1801,39 +1864,54 @@ f_setBatteryValues();]]></StartupCode>
 						<Name><![CDATA[irradiance]]></Name>
 						<Type><![CDATA[double]]></Type>
 					</Parameter>
-					<Body><![CDATA[//ENERGY CALCULATIONS PER HOUR
+					<Body><![CDATA[//ENERGY CALCULATIONS PER HOUSEHOLD
 
-//VARIABLES VALUE RESET (what else do I need to reset?)
+//Variables' value reset (what else do I need to reset?)
 v_baseloadElectricityConsumption_kW = 0;
 v_PVGeneration_kW = 0;
 
-//CODE
-//0) Baseload electricity demand (multiplied by 4 to convert 15-minute data [kWh] to kW)
+//0) Baseload electricity demand (multiplied by 4 to convert 15-minute data from data sources[kWh] to kW)
 v_baseloadElectricityConsumption_kW = uniform(0.2,1.8)*main.tf_electricityDemandProfile(main.v_currentHour) * p_annualElectricityDemand_kWh * 4;
 
 //1) PV electricity supply
-v_PVGeneration_kW = f_powerProduction();
-//traceln("PVGeneration at household " + this.getIndex() + " is " + v_PVGeneration_kW);
+v_PVGeneration_kW = f_pVPowerProduction();
+//traceln("PV Generation at household " + this.getIndex() + " is " + v_PVGeneration_kW);
 
-//2) Household batteries (supply & demand)
-f_batteryChargeDischarge();
+//2) Household batteries electricity supply & demand
+f_batteryDischargeCharge();
 
-//3) EVs (supply & demand)
+if(v_batteryDischargePower_kW != 0){
 
-//4) Heatpumps (demand)
+	v_batteryGeneration_kW = f_batteryDischargeCharge();
+}
+
+else if (v_batteryChargePower_kW != 0){
+	v_batteryDemand_kW = f_batteryDischargeCharge();
+}
+
+else {
+	traceln("None of the charging or discgarging conditions are bing met. ");
+}
+
+//3) EVs electricity supply & demand
+//v_EVGeneration_kW = function;
+//v_EVDemand_kW = function;
+
+//4) Heatpumps electricity demand
+//v_HeatpumpDemand_kW = function;
 
 // Total self-generated energy SUPPLY
-v_householdElectricitySupply_kW = v_PVGeneration_kW;
+v_householdElectricitySupply_kW = v_PVGeneration_kW + v_batteryGeneration_kW;
 
 //Total household DEMAND (add heat pump, EV charging, 
-v_householdElectricityDemand_kW = v_baseloadElectricityConsumption_kW ;]]></Body>
+v_householdElectricityDemand_kW = v_baseloadElectricityConsumption_kW + v_batteryDemand_kW;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1677753006731</Id>
 					<Name><![CDATA[f_setPVValues]]></Name>
-					<X>730</X><Y>150</Y>
+					<X>730</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1850,24 +1928,19 @@ p_numberOfPanels =  round(normal(5, 15, 10, 2.5));
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1677753006733</Id>
-					<Name><![CDATA[f_powerProduction]]></Name>
-					<X>150</X><Y>180</Y>
+					<Name><![CDATA[f_pVPowerProduction]]></Name>
+					<X>730</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//HOUSEHOLD'S POWER PRODUCTION
+					<Body><![CDATA[//HOUSEHOLD'S PV POWER PRODUCTION
 
 //1) PV power generated by the default parameters of the PV panel with respect to the irradiance
 // Capacity factor may vary depending on temperature, inclination, orientation, shade, etc. more detail needed
 v_pVPower_kW = main.v_irradiance_kWperM * p_efficiency * p_panelSurfaceArea_m2 * p_capacityFactor * p_numberOfPanels;
 
 return v_pVPower_kW;
-
-//2) Home battery's discharge
-
-
-//3) EVs discharge
 
 
 ]]></Body>
@@ -1877,17 +1950,20 @@ return v_pVPower_kW;
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1680097315766</Id>
 					<Name><![CDATA[f_batteryChargeDischarge]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1100</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//RESET VARIABLES' VALUES
+					<Body><![CDATA[//BATTERY CHARGE & DISCHARGE FUNCTION [OUTDATED]
+
+//Reset variables
 v_batteryDischargePower_kW = 0;
 v_batteryChargePower_kW = 0;
 
 //Charge (when demand is lower than self-generated supply & battery is not fully charged)
-if(v_householdElectricitySupply_kW > v_householdElectricityDemand_kW && p_batteryCapacity_kWh > v_batterySOC_kWh){
+if(v_householdElectricitySupply_kW > v_householdElectricityDemand_kW && v_batteryChargePower_kW > v_batterySOC_kWh){
 	
 	//Prioritizes the baseload consumption to be met before the battery is charged
 	v_batteryChargePower_kW = v_householdElectricitySupply_kW - v_householdElectricityDemand_kW;
@@ -1895,7 +1971,7 @@ if(v_householdElectricitySupply_kW > v_householdElectricityDemand_kW && p_batter
 }
 
 //Discharge (if self-generated supply is less than demand & the battery has any kind of charge)
-else if (v_householdElectricitySupply_kW < v_householdElectricityDemand_kW && v_batterySOC_kWh > 0){
+else if (v_householdElectricitySupply_kW < v_householdElectricityDemand_kW && v_batterySOC_kWh < v_batteryCapacity_kW){
 	
 	//It discharges at the rate that the manufacturer defined as continous
 	v_batteryDischargePower_kW = p_batteryMaxPower_kW;
@@ -1917,6 +1993,45 @@ v_batterySOC_kWh += v_batteryChargePower_kW - v_batteryDischargePower_kW;]]></Bo
 					<Body><![CDATA[//From Tesla Powerwall 2
 p_batteryCapacity_kWh = 13.5;
 p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, off-grid/backup)]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1680179030360</Id>
+					<Name><![CDATA[f_batteryDischargeCharge]]></Name>
+					<X>1100</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//BATTERY DISCHARGE & CHARGE FUNCTION
+
+//TO-DO: Add a way to make sure battery's SOC does not go lower than 0 and higher than the capacity. For now I put it inside of the "if" statement, but that seems a bit too unnecesary if I can figoure out a way to do it in when the SOC is updated
+
+//Discharge
+if(v_householdElectricityDemand_kW > v_householdElectricitySupply_kW && v_batterySOC_kWh > 0  && v_batterySOC_kWh <= p_batteryCapacity_kWh  && v_batterySOC_kWh > 0){
+	
+	v_batteryDischargePower_kW = p_batteryMaxPower_kW;
+	v_batterySOC_kWh = v_batterySOC_kWh - p_batteryMaxPower_kW;
+	v_batteryChargePower_kW = 0;
+	return v_batteryDischargePower_kW; 
+}
+
+//Charge
+else if (v_householdElectricityDemand_kW < v_householdElectricitySupply_kW && v_batterySOC_kWh == 0  || v_batterySOC_kWh < p_batteryCapacity_kWh){
+
+	v_batteryChargePower_kW = v_householdElectricitySupply_kW - v_householdElectricityDemand_kW;
+	v_batterySOC_kWh = v_batterySOC_kWh - v_batteryChargePower_kW; //the power [kW] is being subrstracted from the energy [kWh] beause these calculations are being done hourly, and since E = P*t, [kWh] = [kW]*[h]
+	v_batteryDischargePower_kW = 0;
+	return v_batteryChargePower_kW;
+}
+
+/*else {
+	v_batteryChargePower_kW = 5555555;
+	v_batteryDischargePower_kW = 5555555;
+	return v_batteryChargePower_kW;
+	return v_batteryDischargePower_kW;
+}*/]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -2144,7 +2259,7 @@ p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, o
 				<Text>
 					<Id>1677753006699</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>720</X><Y>180</Y>
+					<X>720</X><Y>190</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2187,7 +2302,7 @@ p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, o
 				<Text>
 					<Id>1677753006727</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>720</X><Y>360</Y>
+					<X>720</X><Y>370</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2208,7 +2323,7 @@ p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, o
 				<Text>
 					<Id>1677753006729</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>720</X><Y>100</Y>
+					<X>720</X><Y>90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2328,7 +2443,7 @@ p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, o
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>DASHED</LineStyle>
 					<Width>300</Width>
-					<Height>420</Height>
+					<Height>460</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor/>
 					<FillMaterial>null</FillMaterial>
@@ -2336,7 +2451,7 @@ p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, o
 				<Text>
 					<Id>1680096575780</Id>
 					<Name><![CDATA[text15]]></Name>
-					<X>1080</X><Y>340</Y>
+					<X>1080</X><Y>390</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2357,7 +2472,7 @@ p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, o
 				<Text>
 					<Id>1680096575782</Id>
 					<Name><![CDATA[text16]]></Name>
-					<X>1080</X><Y>220</Y>
+					<X>1080</X><Y>270</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2378,7 +2493,7 @@ p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, o
 				<Text>
 					<Id>1680096575791</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>1080</X><Y>100</Y>
+					<X>1080</X><Y>90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2584,7 +2699,7 @@ p_batteryMaxPower_kW = 5; //P_max,continous = 5 kW, P_max,peak = 7kW (for 10s, o
 
 			<Parameters>			
 				<Parameter>
-					<ParameterName><![CDATA[dt_h_rapid]]></ParameterName>
+					<ParameterName><![CDATA[dt_h]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
